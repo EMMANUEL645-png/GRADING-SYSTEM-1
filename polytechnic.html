@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polytechnic Grading - Nigeria Grading System</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="images/favicon.svg" alt="Graduation Cap" class="nav-icon">
+        <span>Nigeria Grading System</span>
+      </a>
+      <span class="nav-tag">Polytechnic</span>
+    </div>
+  </header>
+
+  <!-- Page Main Container -->
+  <main class="container">
+
+    <!-- Back to Home Link -->
+    <div class="back-button-wrapper">
+      <a href="index.html" class="back-button">&larr; Back to home</a>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="page-title">Polytechnic Grading System (NBTE Standard)</h1>
+
+    <!-- 2-Paragraph Description -->
+    <section class="page-description">
+      <p>The Polytechnic grading system in Nigeria is governed by the National Board for Technical Education (NBTE). This standardized framework applies across all Federal, State, and private Polytechnics as well as Colleges of Technology offering National Diploma (ND) and Higher National Diploma (HND) technical education programs.</p>
+      <p>Academic performance is evaluated on a 4.00 Cumulative Grade Point Average (CGPA) scale. Students achieving a CGPA of 3.50 to 4.00 earn Distinction, while scores between 3.00 and 3.49 receive Upper Credit, and 2.50 to 2.99 obtain Lower Credit. A CGPA of 2.00 to 2.49 results in a Pass grade, whereas any CGPA below 2.00 falls into the Fail category.</p>
+    </section>
+
+    <!-- Calculator & Guide Grid -->
+    <div class="calculator-grid">
+
+      <!-- Interactive Input Card -->
+      <section class="input-card">
+        <h2 class="input-card-header">Check Polytechnic Class</h2>
+        
+        <div class="form-group">
+          <label for="cgpaInput" class="form-label">Enter CGPA (0.00 - 4.00):</label>
+          <input type="number" id="cgpaInput" class="form-input" placeholder="e.g. 3.45" min="0" max="4.00" step="0.01">
+        </div>
+
+        <button type="button" class="calc-btn" onclick="checkClass()">Check Class</button>
+
+        <!-- Result Area -->
+        <div id="cgpaResult" class="result"></div>
+      </section>
+
+      <!-- Grading Guide Card -->
+      <section class="guide-card">
+        <h2 class="guide-title">Polytechnic Grading Guide</h2>
+        <ul class="guide-list">
+          <li class="guide-item">
+            <span class="guide-band-name">Distinction</span>
+            <span class="guide-range">3.50 - 4.00</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Upper Credit</span>
+            <span class="guide-range">3.00 - 3.49</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Lower Credit</span>
+            <span class="guide-range">2.50 - 2.99</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Pass</span>
+            <span class="guide-range">2.00 - 2.49</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Fail</span>
+            <span class="guide-range">0.00 - 1.99</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; Nigeria Education Grading System Portal. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Inline JavaScript for Polytechnic Page -->
+  <script>
+    function checkClass() {
+      let cgpaInput = document.getElementById('cgpaInput');
+      let cgpaResult = document.getElementById('cgpaResult');
+      let val = cgpaInput.value;
+
+      if (val == '') {
+        alert('input should not be empty');
+      }
+
+      let cgpa = parseFloat(val);
+
+      if (isNaN(cgpa) || cgpa < 0 || cgpa > 4.00) {
+        cgpaResult.innerHTML = 'Invalid CGPA! Please enter a value between 0.00 and 4.00.';
+        cgpaResult.className = 'result result-invalid';
+      } else if (cgpa >= 3.50) {
+        cgpaResult.innerHTML = 'Class: Distinction';
+        cgpaResult.className = 'result result-success';
+      } else if (cgpa >= 3.00) {
+        cgpaResult.innerHTML = 'Class: Upper Credit';
+        cgpaResult.className = 'result result-success';
+      } else if (cgpa >= 2.50) {
+        cgpaResult.innerHTML = 'Class: Lower Credit';
+        cgpaResult.className = 'result result-success';
+      } else if (cgpa >= 2.00) {
+        cgpaResult.innerHTML = 'Class: Pass';
+        cgpaResult.className = 'result result-warning';
+      } else {
+        cgpaResult.innerHTML = 'Class: Fail';
+        cgpaResult.className = 'result result-danger';
+      }
+
+      document.getElementById('cgpaInput').value = '';
+    }
+  </script>
+
+</body>
+</html>

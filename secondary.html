@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secondary School Grading - Nigeria Grading System</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="images/favicon.svg" alt="Graduation Cap" class="nav-icon">
+        <span>Nigeria Grading System</span>
+      </a>
+      <span class="nav-tag">Secondary</span>
+    </div>
+  </header>
+
+  <!-- Page Main Container -->
+  <main class="container">
+
+    <!-- Back to Home Link -->
+    <div class="back-button-wrapper">
+      <a href="index.html" class="back-button">&larr; Back to home</a>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="page-title">Secondary School Grading System</h1>
+
+    <!-- 2-Paragraph Description -->
+    <section class="page-description">
+      <p>The Secondary School grading system in Nigeria is the national standard used by examination bodies such as the West African Examinations Council (WAEC), National Examinations Council (NECO), National Business and Technical Examinations Board (NABTEB), and Basic Education Certificate Examination (BECE). It assesses senior and junior secondary students based on continuous assessment tasks and comprehensive final examinations scored on a percentage scale from 0 to 100 marks.</p>
+      <p>Under this scale, candidate performance is classified into six primary grade letter bands ranging from Grade A down to Grade F. A score of 70% and above represents an Excellent Grade A, while grades C (50-59%) and above are regarded as credit passes necessary for tertiary institution admissions across Nigeria. Scores below 40% are categorized as Grade F (Fail).</p>
+    </section>
+
+    <!-- Calculator & Guide Grid -->
+    <div class="calculator-grid">
+
+      <!-- Interactive Input Card -->
+      <section class="input-card">
+        <h2 class="input-card-header">Check Secondary Grade</h2>
+        
+        <div class="form-group">
+          <label for="scoreInput" class="form-label">Enter Total Score (0 - 100):</label>
+          <input type="number" id="scoreInput" class="form-input" placeholder="e.g. 75" min="0" max="100" step="any">
+        </div>
+
+        <button type="button" class="calc-btn" onclick="checkGrade()">Check Grade</button>
+
+        <!-- Result Area -->
+        <div id="scoreResult" class="result"></div>
+      </section>
+
+      <!-- Grading Guide Card -->
+      <section class="guide-card">
+        <h2 class="guide-title">Secondary Grading Guide</h2>
+        <ul class="guide-list">
+          <li class="guide-item">
+            <span class="guide-band-name">Grade A (Excellent)</span>
+            <span class="guide-range">70 - 100</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Grade B (Very Good)</span>
+            <span class="guide-range">60 - 69</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Grade C (Credit)</span>
+            <span class="guide-range">50 - 59</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Grade D (Pass)</span>
+            <span class="guide-range">45 - 49</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Grade E (Fair)</span>
+            <span class="guide-range">40 - 44</span>
+          </li>
+          <li class="guide-item">
+            <span class="guide-band-name">Grade F (Fail)</span>
+            <span class="guide-range">0 - 39</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; Nigeria Education Grading System Portal. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Inline JavaScript for Secondary Page -->
+  <script>
+    function checkGrade() {
+      let scoreInput = document.getElementById('scoreInput').value;
+      let scoreResult = document.getElementById('scoreResult');
+
+
+      if (scoreInput == '') {
+        alert('input should not be empty')
+        scoreResult.innerHTML = 'Invalid score! Please enter a value between 0 and 100.';
+        scoreResult.className = 'result result-invalid';
+      } else if (scoreInput >= 70) {
+        scoreResult.innerHTML = 'Grade: A (Excellent)';
+        scoreResult.className = 'result result-success';
+      } else if (scoreInput >= 60) {
+        scoreResult.innerHTML = 'Grade: B (Very Good)';
+        scoreResult.className = 'result result-success';
+      } else if (scoreInput >= 50) {
+        scoreResult.innerHTML = 'Grade: C (Credit)';
+        scoreResult.className = 'result result-success';
+      } else if (scoreInput >= 45) {
+        scoreResult.innerHTML = 'Grade: D (Pass)';
+        scoreResult.className = 'result result-warning';
+      } else if (scoreInput >= 40) {
+        scoreResult.innerHTML = 'Grade: E (Fair)';
+        scoreResult.className = 'result result-warning';
+      } else {
+        scoreResult.innerHTML = 'Grade: F (Fail)';
+        scoreResult.className = 'result result-danger';
+      }
+
+      document.getElementById('scoreInput').value = '';
+    }
+  </script>
+
+</body>
+</html>
